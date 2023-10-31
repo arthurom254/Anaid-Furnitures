@@ -1,0 +1,54 @@
+
+{%load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{site_name}}</title>
+    {%include './css.html' %}
+</head>
+<body>
+    
+<section class="mt-0">
+    <div class="container">
+        <div class="row g-0 vh-lg-100">
+            <div class="col-12 col-lg-7 pt-5 pt-lg-10">
+                <div class="pe-lg-5">
+                    <a class="navbar-brand fw-bold fs-3 flex-shrink-0 mx-0 px-0" href="/">
+                            {{site_name}}
+                        </a>
+                        {%include './checkout_nav.html'%}
+                     <div class="mt-5">
+                        <h3 class="fs-5 fw-bolder mb-0 border-bottom pb-4">Your Cart</h3>
+                        <div class="table-responsive">
+                            <table class="table align-middle">
+                                <tbody class="border-0">
+                                   {%include './cart_item.html'%}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-5 bg-light pt-lg-10 aside-checkout pb-5 pb-lg-0 my-5 my-lg-0">
+                <div class="p-4 py-lg-0 pe-lg-0 ps-lg-5">
+                    <div class="pb-4 border-bottom">
+                        <div class="d-flex flex-column flex-md-row justify-content-md-between mb-4 mb-md-2">
+                            <div>
+                                <p class="m-0 fw-bold fs-5">Grand Total</p>
+                                <span class="text-muted small">Inc ${{total_tax}} sales tax</span>
+                            </div>
+                            <p class="m-0 fs-5 fw-bold">${{total_price}}</p>
+                        </div>
+                    </div>
+                    <a href="/checkout/information" class="btn btn-dark w-100 text-center" role="button">Proceed to checkout</a>                    </div>
+            </div>
+        </div>
+    </div>
+</section>
+{%include './js.html' %}
+
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{site_name}}</title>
+    {%include './css.html' %}
+</head>
+<body>
+    {%include 'clients/messages.html'%}    
+    {%include './navbar.html' %} 
+    {%block body%} {%endblock%} 
+    {%include './footer.html' %}
+    {%include './js.html' %}
+    {%block script%} {%endblock%} 
+</html>
+</body>

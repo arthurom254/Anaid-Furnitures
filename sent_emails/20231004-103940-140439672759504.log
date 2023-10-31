@@ -1,0 +1,62 @@
+Content-Type: multipart/alternative;
+ boundary="===============8899052463961763246=="
+MIME-Version: 1.0
+Subject: Order received by kipekee
+From: webmaster@localhost
+To: arthur@kipekee.com
+Date: Wed, 04 Oct 2023 10:39:40 -0000
+Message-ID: <169641598063.33846.10149262357108174966@Atom-F11>
+
+--===============8899052463961763246==
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+
+Hello John Arthur,
+We Have Received Your Order Of the following items
+
+    
+    1 - Lock and key
+    
+
+Thank you for shopping with us.
+Reguards
+John Arthur S.
+&copy; kipekee
+
+
+--===============8899052463961763246==
+Content-Type: text/html; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+
+<h2 style="color: gray;">Hello John Arthur,</h2>
+<h3 style="color:darkorchid;">We Have Received Your Order Of the following items</h3>
+<table border="1" style="border-collapse: collapse; border:1px; ">
+    <tr style="background-color: cornflowerblue; color: white;">
+        <th>Quantity</th>
+        <th style="width: 100%;">Items</th>
+        <th>Price</th>
+    </tr>
+    
+    <tr style="border: 1px solid black;">
+        <td>1</td>
+        <td style="width: 100%;">Lock and key</td>
+        <td>23</td>
+
+    </tr>
+    
+</table>
+<p>Thank you for shopping with us.</p>
+<p>Regards</p>
+<p>John Arthur S.</p>
+<p>&copy; kipekee</p>
+
+
+--===============8899052463961763246==--
+
+-------------------------------------------------------------------------------

@@ -1,0 +1,23 @@
+{% extends 'clients/base.html' %}
+{% load filters %}
+{%block body%}
+
+<style>
+    .fas{
+        width:10px;
+        height: 10px;
+    }
+    .fas.fa-star::before{
+        content: '⭐';
+    }
+    .fa-star-half::before{
+        content: '★';
+    }
+    .far.fa-star::before{
+        content: '☆';
+    }
+</style>
+<div class="atom">
+    <p>Rating {{ratings | rating_stars | safe}}</p>
+</div>
+{%endblock%}

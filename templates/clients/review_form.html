@@ -1,0 +1,31 @@
+<div class="mt-5 ">
+    
+    <form action="" class="d-none" method="post">
+        {%csrf_token%}
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label for="title" class="form-label">Title</label>
+                <input type="text" class="form-control" id="title" name="title" required="">
+            </div>
+        </div>
+
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label for="stars" class="form-label">Ratings (min 1, max 5)</label>
+                <input type="text" class="form-control" id="stars" name="stars" required="">
+            </div>
+        </div>
+
+        <div class="col-12">
+            <div class="form-group">
+                <label for="body" class="form-label">Body</label>
+                <textarea name="body" id="body" class="form-control"></textarea>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <input type="submit" value="Save" class="form-control btn-outline-dark">
+        </div>
+    </div>
+</form>
+</div>

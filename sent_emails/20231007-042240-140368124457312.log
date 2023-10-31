@@ -1,0 +1,80 @@
+Content-Type: multipart/alternative;
+ boundary="===============5781031365824856266=="
+MIME-Version: 1.0
+Subject: Order received by kipekee
+From: webmaster@localhost
+To: admin@kipekee.com
+Date: Sat, 07 Oct 2023 04:22:40 -0000
+Message-ID: <169665256025.6085.13187703387768543187@Atom-F11>
+
+--===============5781031365824856266==
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+
+Hello  ,
+We Have Received Your Order Of the following items
+
+    
+    2 - Lock and key
+    
+    2 - Regular
+    
+    1 - Add category
+    
+
+Thank you for shopping with us.
+Reguards
+John Arthur S.
+&copy; kipekee
+
+
+--===============5781031365824856266==
+Content-Type: text/html; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+
+<h2 style="color: gray;">Hello  ,</h2>
+<h3 style="color:darkorchid;">We Have Received Your Order Of the following items</h3>
+<table border="1" style="border-collapse: collapse; border:1px; ">
+    <tr style="background-color: cornflowerblue; color: white;">
+        <th>Quantity</th>
+        <th style="width: 100%;">Items</th>
+        <th>Price</th>
+    </tr>
+    
+    <tr style="border: 1px solid black;">
+        <td>2</td>
+        <td style="width: 100%;">Lock and key</td>
+        <td>46</td>
+
+    </tr>
+    
+    <tr style="border: 1px solid black;">
+        <td>2</td>
+        <td style="width: 100%;">Regular</td>
+        <td>64</td>
+
+    </tr>
+    
+    <tr style="border: 1px solid black;">
+        <td>1</td>
+        <td style="width: 100%;">Add category</td>
+        <td>56</td>
+
+    </tr>
+    
+</table>
+<p>Thank you for shopping with us.</p>
+<p>Regards</p>
+<p>John Arthur S.</p>
+<p>&copy; kipekee</p>
+
+
+--===============5781031365824856266==--
+
+-------------------------------------------------------------------------------

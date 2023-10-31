@@ -1,0 +1,66 @@
+<div class="col-12" data-aos="fade-up">
+    <h3 class="fs-4 fw-bolder mt-7 mb-4">You May Also Like</h3>
+    <div class="swiper-container" data-swiper data-options='{
+        "spaceBetween": 10,
+        "loop": true,
+        "autoplay": {
+          "delay": 5000,
+          "disableOnInteraction": false
+        },
+        "navigation": {
+          "nextEl": ".swiper-next",
+          "prevEl": ".swiper-prev"
+        },   
+        "breakpoints": {
+          "600": {
+            "slidesPerView": 2
+          },
+          "1024": {
+            "slidesPerView": 3
+          },       
+          "1400": {
+            "slidesPerView": 4
+          }
+        }
+      }'>
+      <div class="swiper-wrapper">
+
+        {%for relateds in related %}
+            <div class="swiper-slide">
+              <div class="card border border-transparent position-relative overflow-hidden h-100 transparent">
+                  <div class="card-img position-relative">
+                      <div class="card-badges">
+                        {%if relateds.offer == 'True' %}
+                              <span class="badge badge-card"><span class="f-w-2 f-h-2 bg-danger rounded-circle d-block me-1"></span> Sale</span>
+                        {%endif%}
+                      </div>
+                      <span class="position-absolute top-0 end-0 p-2 z-index-20 text-muted"><i class="ri-heart-line"></i></span>
+                      <picture class="position-relative overflow-hidden d-block bg-light">
+                          <img class="w-100 img-fluid position-relative z-index-10" title="" src="/media/{{relateds.img.img}}" alt="">
+                      </picture>
+                          <div class="position-absolute start-0 bottom-0 end-0 z-index-20 p-2">
+                              <button class="btn btn-quick-add"><i class="ri-add-line me-2"></i> See More</button>
+                          </div>
+                  </div>
+                  <div class="card-body px-0">
+                      <a class="text-decoration-none link-cover" href="/category/{{relateds.category.first}}/{{relateds.id}}">{{relateds.title}}</a>
+                      <small class="text-muted d-block">{{relateds.available}} available</small>
+                              <p class="mt-2 mb-0 small"> {%if relateds.offer == 'True' %} <s class="text-muted">${{relateds.price2}}</s>{%endif%} <span class="text-danger">${{relateds.price}}</span></p>
+                  </div>
+              </div>
+            </div>
+
+            {%endfor%}
+            
+      </div>
+    
+      <div
+        class="swiper-prev top-50  start-0 z-index-30 cursor-pointer transition-all bg-white px-3 py-4 position-absolute z-index-30 top-50 start-0 mt-n8 d-flex justify-content-center align-items-center opacity-50-hover">
+        <i class="ri-arrow-left-s-line ri-lg"></i></div>
+      <div
+        class="swiper-next top-50 end-0 z-index-30 cursor-pointer transition-all bg-white px-3 py-4 position-absolute z-index-30 top-50 end-0 mt-n8 d-flex justify-content-center align-items-center opacity-50-hover">
+        <i class="ri-arrow-right-s-line ri-lg"></i></div>
+    
+    
+    </div>               
+</div>

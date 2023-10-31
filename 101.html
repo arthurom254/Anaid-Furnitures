@@ -1,0 +1,29 @@
+<html>
+  <head>
+    <title>Popup Window Form</title>
+  </head>
+  <body>
+    <h2>Popup Window Form</h2>
+    <form id="myForm">
+      <label for="numberInput">Enter a number:</label>
+      <input type="number" id="numberInput" required /><br /><br />
+      <input type="submit" value="Submit" />
+    </form>
+    <script>
+      // Handle form submission
+      popup.document
+        .getElementById("myForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          // Get the number input value
+          var number = popup.document.getElementById("numberInput").value;
+
+          // Close the popup window
+          popup.close();
+          // Do something with the number value
+          console.log("Number: " + number);
+        });
+    </script>
+  </body>
+</html>

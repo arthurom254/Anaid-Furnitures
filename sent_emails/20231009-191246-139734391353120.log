@@ -1,0 +1,68 @@
+Content-Type: multipart/alternative;
+ boundary="===============5405489930316465163=="
+MIME-Version: 1.0
+Subject: : admin@kipekee.com Placed an order
+From: webmaster@localhost
+To: admn@kipekee.com
+Date: Mon, 09 Oct 2023 19:12:46 -0000
+Message-ID: <169687876670.11959.6470039949829764200@Atom-F11>
+
+--===============5405489930316465163==
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+
+ , Placed an order
+Items Ordered
+
+    
+        Quantity
+        Items
+        Price
+    
+    
+    
+        5
+        Lock and key
+        115
+
+    
+    
+
+
+&copy; kipekee
+
+
+--===============5405489930316465163==
+Content-Type: text/html; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+
+<h2 style="color: gray;"> , Placed an order</h2>
+<h3 style="color:darkorchid;">Items Ordered</h3>
+<table border="1" style="border-collapse: collapse; border:1px; ">
+    <tr style="background-color: cornflowerblue; color: white;">
+        <th>Quantity</th>
+        <th style="width: 100%;">Items</th>
+        <th>Price</th>
+    </tr>
+    
+    <tr style="border: 1px solid black;">
+        <td>5</td>
+        <td style="width: 100%;">Lock and key</td>
+        <td>115</td>
+
+    </tr>
+    
+</table>
+
+<p>&copy; kipekee</p>
+
+
+--===============5405489930316465163==--
+
+-------------------------------------------------------------------------------

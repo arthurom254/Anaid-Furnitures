@@ -1,0 +1,15 @@
+{% extends 'clients/base.html' %}
+{%load static%}
+{% load filters %}
+{%block body%}
+
+<section class="mt-0">
+
+    <div class="container-fluid" data-aos="fade-in">
+    {%include './products.html' %}
+    </div>
+
+</section>
+
+
+{%endblock%}

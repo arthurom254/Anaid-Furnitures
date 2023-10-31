@@ -1,0 +1,24 @@
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Subject: Password reset on example.com
+From: webmaster@localhost
+To: admin@kipekee.com
+Date: Wed, 04 Oct 2023 11:48:24 -0000
+Message-ID: <169642010493.36281.11508875086656726743@Atom-F11>
+
+
+You're receiving this email because you requested a password reset for your user account at example.com.
+	
+Please go to the following page and choose a new password:
+	
+    <p>Blue</p>
+ 	
+	Your username, in case you’ve forgotten: admin@kipekee.com
+	
+	Thanks for using our site!
+	
+	The example.com team
+	
+	
+-------------------------------------------------------------------------------

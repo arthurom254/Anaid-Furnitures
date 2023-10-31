@@ -1,0 +1,86 @@
+
+{% load filters %}
+{%if review %}
+<div class="col-12" data-aos="fade-up">
+    <h3 class="fs-4 fw-bolder mt-7 mb-4 reviews">Reviews</h3>
+    
+    <div class="bg-light p-5 justify-content-between d-flex flex-column flex-lg-row">
+        <div class="d-flex flex-column align-items-center mb-4 mb-lg-0">
+            <div class="bg-dark text-white f-w-24 f-h-24 d-flex rounded-circle align-items-center justify-content-center fs-2 fw-bold mb-3">{{total_stars}}</div>
+            
+            <div class="rating position-relative d-table">
+                <div class="stars ri-2x">
+                    {{total_stars | rating_stars | safe}}
+                </div>
+            </div>    </div>
+        <div class="d-flex flex-grow-1 flex-column ms-lg-8">
+            {%for i in review_each %}
+            <div class="d-flex align-items-center justify-content-start mb-2">
+                <div class="f-w-20">
+                    
+                    <div class="rating position-relative d-table">
+                        <div class="stars">
+                            {{i.count | rating_stars | safe}}
+                        </div>
+                    </div>            
+                </div>
+                <div class="progress d-flex flex-grow-1 mx-4 f-h-1">
+                    <div class="progress-bar bg-dark" role="progressbar" style="width: {{i.p}}%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                <span class="fw-bold small d-block f-w-4 text-end">{{i.r}}</span>
+            </div>
+            {%endfor%}
+            <p class="mt-3 mb-0 d-flex align-items-start"><i class="ri-chat-voice-line me-2"></i> {{review.count}} customers have reviewed this product</p>
+        </div>
+    </div>
+    
+    <div class="row g-6 g-md-8 g-lg-10 my-3">
+       
+        {%for reviews in review %}
+        <div class="col-12 col-lg-6 col-xxl-4">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              
+                <div class="rating position-relative d-table">
+                    
+                    <div class="stars">
+                        {{reviews.stars | rating_stars | safe}}
+                    </div>
+                </div>            <div class="text-muted small">{{reviews.date.date}} by {{reviews.user.first_name}}</div>
+            </div>
+            <p class="fw-bold mb-2">{{reviews.title}}</p>
+            <p class="fs-7">{{reviews.text}}</p>
+        </div>
+        {%endfor%}
+        {%if user.is_authenticated %}
+        <div class="col-12 col-lg-6 col-xxl-4">
+            <form action="" method="post">
+                {%csrf_token%}
+                <div class="row">
+                    <div class="col-6">
+                        <input type="text" class="form-control" id="title" name="title" required="" placeholder="Title">
+                    </div>
+                    <div class="col-6">
+                        <input type="text" class="form-control" id="stars" name="stars" required="" placeholder="Star Ratings (0.5 to 5)">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                    <textarea name="body" id="body" class="form-control my-3" placeholder="Body"></textarea>
+                    </div>
+                    <div class="col-12">
+                        <input type="submit" value="Save Review" class="form-control btn-outline-dark">
+                    </div>
+                </div>
+                
+            </form>
+            
+        </div>
+        {%endif%}
+    </div>
+</div>
+{%else%}
+<div class="col-12" data-aos="fade-up">
+    <h3 class="fs-4 fw-bolder mt-7 mb-4 reviews">No Reviews Yet{%if user.is_authenticated %}, Be the first to Review{%else%} <a href="/login?next=">Login to review</a> {%endif%}</h3>
+</div>
+{%endif%}
+

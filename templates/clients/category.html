@@ -1,0 +1,68 @@
+{%load static %}
+<div class="container-fluid mt-5">
+    <div class="m-0">
+        <div class="swiper-container overflow-hidden overflow-lg-visible" data-swiper data-options='{
+                "spaceBetween": 25,
+                "slidesPerView": 1,
+                "observer": true,
+                "observeParents": true,
+                "breakpoints": {     
+                  "540": {
+                    "slidesPerView": 1,
+                    "spaceBetween": 0
+                  },
+                  "770": {
+                    "slidesPerView": 2
+                  },
+                  "1024": {
+                    "slidesPerView": 3
+                  },
+                  "1200": {
+                    "slidesPerView": 4
+                  },
+                  "1500": {
+                    "slidesPerView": 5
+                  }
+                },   
+                "navigation": {
+                  "nextEl": ".swiper-next",
+                  "prevEl": ".swiper-prev"
+                }
+              }'>
+            <div class="swiper-wrapper">
+              {%for categorys in category%}
+                <div class="swiper-slide align-self-stretch bg-transparent h-auto">
+                    <div class="me-xl-n4 me-xxl-n5" data-aos="fade-up" data-aos-delay="700">
+                        <picture class="d-block mb-4 img-clip-shape-one">
+                            <img class="w-100" title="" src="/media/{{categorys.img}}"
+                                alt="{{categorys.title}}">
+                        </picture>
+                        <p class="title-small mb-2 text-muted">{{categorys.description}}</p>
+                        <h4 class="lead fw-bold">{{categorys.title}}</h4>
+                        <a href="/category/{{categorys.title}}" class="btn btn-psuedo align-self-start">Shop Now</a>
+                    </div>
+                </div>
+                {%endfor%}
+
+            </div>
+
+            <div
+                class="swiper-btn swiper-prev swiper-disabled-hide swiper-btn-side btn-icon bg-white text-dark ms-3 shadow mt-n5">
+                <i class="ri-arrow-left-s-line "></i>
+              </div>
+            <div
+                class="swiper-btn swiper-next swiper-disabled-hide swiper-btn-side swiper-btn-side-right btn-icon bg-white text-dark me-3 shadow mt-n5">
+                <i class="ri-arrow-right-s-line ri-lg"></i>
+              </div>
+
+        </div> <svg width="0" height="0">
+            <defs>
+                <clipPath id="svg-slanted-one" clipPathUnits="objectBoundingBox">
+                    <path
+                        d="M0.822,1 H0.016 a0.015,0.015,0,0,1,-0.016,-0.015 L0.158,0.015 A0.016,0.015,0,0,1,0.173,0 L0.984,0 a0.016,0.015,0,0,1,0.016,0.015 L0.837,0.985 A0.016,0.015,0,0,1,0.822,1">
+                    </path>
+                </clipPath>
+            </defs>
+        </svg>
+    </div>
+</div>

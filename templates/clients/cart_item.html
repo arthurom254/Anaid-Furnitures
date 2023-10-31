@@ -1,0 +1,22 @@
+{%for carts in cart %}
+<div class="row mx-0 py-4 g-0 border-bottom">
+    <div class="col-2 position-relative">
+        <picture class="d-block ">
+            <img class="img-fluid" src="/media/{{carts.item.img.img}}" style="cursor: pointer;"  alt="{{carts.title}}" onclick="window.location.href='/category/{{carts.item.category.first}}/{{carts.item.id}}'">
+        </picture>
+    </div>
+    <div class="col-9 offset-1">
+        <div>
+            <h6 class="justify-content-between d-flex align-items-start mb-2">
+                {{carts.item.title}}
+                <a href="#" onclick="cart_remove('{{carts.item.id}}')" class=" ms-3 text-decoration-none p-2 bg-dark text-light rounded rounded-circle"> <i class="ri-close-line"></i></a>
+            </h6>
+            <span class="d-block text-muted fw-bolder text-uppercase fs-9">Qty: {{carts.qty}}</span>
+            <span class="d-block text-muted fw-bolder text-uppercase fs-9">Price: {{carts.item.price}}</span>
+        </div>
+        <p class="fw-bolder text-end text-muted m-0">${{carts.price}}</p>
+    </div>
+</div>
+{%empty%}
+<h3 class="fs-5 fw-bolder mb-0 border-bottom pb-4">Your Cart is empty <a href="/">Go back ?</a></h3>
+{%endfor%}

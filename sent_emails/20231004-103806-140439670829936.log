@@ -1,0 +1,71 @@
+Content-Type: multipart/alternative;
+ boundary="===============3717810143587537685=="
+MIME-Version: 1.0
+Subject: Order received by kipekee
+From: webmaster@localhost
+To: admin@kipekee.com
+Date: Wed, 04 Oct 2023 10:38:06 -0000
+Message-ID: <169641588641.33846.13123706440274687809@Atom-F11>
+
+--===============3717810143587537685==
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+
+Hello  ,
+We Have Received Your Order Of the following items
+
+    
+    1 - Regular
+    
+    4 - Add category
+    
+
+Thank you for shopping with us.
+Reguards
+John Arthur S.
+&copy; kipekee
+
+
+--===============3717810143587537685==
+Content-Type: text/html; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+
+<h2 style="color: gray;">Hello  ,</h2>
+<h3 style="color:darkorchid;">We Have Received Your Order Of the following items</h3>
+<table border="1" style="border-collapse: collapse; border:1px; ">
+    <tr style="background-color: cornflowerblue; color: white;">
+        <th>Quantity</th>
+        <th style="width: 100%;">Items</th>
+        <th>Price</th>
+    </tr>
+    
+    <tr style="border: 1px solid black;">
+        <td>1</td>
+        <td style="width: 100%;">Regular</td>
+        <td>32</td>
+
+    </tr>
+    
+    <tr style="border: 1px solid black;">
+        <td>4</td>
+        <td style="width: 100%;">Add category</td>
+        <td>224</td>
+
+    </tr>
+    
+</table>
+<p>Thank you for shopping with us.</p>
+<p>Regards</p>
+<p>John Arthur S.</p>
+<p>&copy; kipekee</p>
+
+
+--===============3717810143587537685==--
+
+-------------------------------------------------------------------------------

@@ -1,0 +1,40 @@
+{%load static %}
+<div class="container pt-7 mb-5 mb-lg-10">
+    <div class="row g-4">
+        {% for items in item %}
+        <div class="col-12 col-sm-6 col-lg-4">
+            <div class="card border border-transparent position-relative overflow-hidden h-100 transparent">
+                <div class="card-img position-relative">
+                    <div class="card-badges">
+                        <span class="badge badge-card">
+                            {%if items.offer == 'True' %}
+                            <span class="f-w-2 f-h-2 bg-danger rounded-circle d-block me-1"></span> Sale</span>
+                        {%endif%}
+
+                    </div>
+                    <span class="position-absolute top-0 end-0 p-2 z-index-20 text-muted"><i
+                            class="ri-heart-line"></i></span>
+                    <picture class="position-relative overflow-hidden d-block bg-light">
+                        <img class="w-100 img-fluid position-relative z-index-10" title=""
+                            src="/media/{{items.img.img}}" alt="">
+                    </picture>
+                    <div class="position-absolute start-0 bottom-0 end-0 z-index-20 p-2">
+                        <button class="btn btn-quick-add"><i class="ri-add-line me-2"></i>See More</button>
+                    </div>
+                </div>
+                <div class="card-body px-0">
+                    <a class="text-decoration-none link-cover"
+                        href="/category/{{items.category.first}}/{{items.id}}">{{items.title}}</a>
+                    <small class="text-muted d-block">{{items.available}} available</small>
+                    <p class="mt-2 mb-0 small"> {%if items.offer == 'True' %}<s
+                            class="text-muted">${{items.price2}}</s>{%endif%} <span
+                            class="text-danger">${{items.price}}</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        {%empty%}
+        <h3>Nothing Found</h3>
+        {% endfor %}
+    </div>
+</div>

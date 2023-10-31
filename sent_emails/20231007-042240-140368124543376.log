@@ -1,0 +1,96 @@
+Content-Type: multipart/alternative;
+ boundary="===============1346726761195940370=="
+MIME-Version: 1.0
+Subject: : admin@kipekee.com Placed an order
+From: webmaster@localhost
+To: admn@kipekee.com
+Date: Sat, 07 Oct 2023 04:22:40 -0000
+Message-ID: <169665256028.6085.3018512318899472200@Atom-F11>
+
+--===============1346726761195940370==
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+
+ , Placed an order
+Items Ordered
+
+    
+        Quantity
+        Items
+        Price
+    
+    
+    
+        2
+        Lock and key
+        46
+
+    
+    
+    
+        2
+        Regular
+        64
+
+    
+    
+    
+        1
+        Add category
+        56
+
+    
+    
+
+
+&copy; kipekee
+
+
+--===============1346726761195940370==
+Content-Type: text/html; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+
+<h2 style="color: gray;"> , Placed an order</h2>
+<h3 style="color:darkorchid;">Items Ordered</h3>
+<table border="1" style="border-collapse: collapse; border:1px; ">
+    <tr style="background-color: cornflowerblue; color: white;">
+        <th>Quantity</th>
+        <th style="width: 100%;">Items</th>
+        <th>Price</th>
+    </tr>
+    
+    <tr style="border: 1px solid black;">
+        <td>2</td>
+        <td style="width: 100%;">Lock and key</td>
+        <td>46</td>
+
+    </tr>
+    
+    <tr style="border: 1px solid black;">
+        <td>2</td>
+        <td style="width: 100%;">Regular</td>
+        <td>64</td>
+
+    </tr>
+    
+    <tr style="border: 1px solid black;">
+        <td>1</td>
+        <td style="width: 100%;">Add category</td>
+        <td>56</td>
+
+    </tr>
+    
+</table>
+
+<p>&copy; kipekee</p>
+
+
+--===============1346726761195940370==--
+
+-------------------------------------------------------------------------------

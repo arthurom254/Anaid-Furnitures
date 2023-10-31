@@ -1,0 +1,29 @@
+{%load static %}
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="{% static 'clients/assets/js/vendor.bundle.js' %}"></script>
+<script src="{% static 'clients/assets/js/theme.bundle.js' %}"></script>
+<script>
+    function cart_remove(id) {
+   $.ajax({
+     type: "GET",
+           url: `/cart/${id}`,
+           data: "add=0",
+           success: function (msg) {
+            location.reload()                        
+           }
+       });
+   }
+</script>
+
+<script>
+    var alertList = document.querySelectorAll('.alert');
+    alertList.forEach(function (alert) {
+      new bootstrap.Alert(alert)
+    })
+  </script>
+
+<script>
+    setTimeout( ()=>{
+      $(".alert").alert("close");
+    }, 3000)
+  </script>

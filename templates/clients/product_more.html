@@ -1,0 +1,168 @@
+{% extends 'clients/base.html' %}
+{% load static %}
+{% load filters %}
+{%block body%}
+  <section class="mt-0 ">
+    {%include './breadcrumb.html' %}
+    <div class="container-fluid mt-5">
+        <div class="row g-9" data-sticky-container>
+            <div class="col-12 col-md-6 col-xl-7">
+                <div class="row g-3" data-aos="fade-right">
+                    <div class="col-12">
+                        <picture>
+                            <img class="img-fluid" data-zoomable src="/media/{{product.img.img}}" alt="">
+                        </picture>
+                    </div>
+                    <div class="col-12">
+                        <picture>
+                            <img class="img-fluid" data-zoomable src="/media/{{product.img.img1}}" alt="">
+                        </picture>
+                    </div>
+                    <div class="col-12">
+                        <picture>
+                            <img class="img-fluid" data-zoomable src="/media/{{product.img.img2}}" alt="">
+                        </picture>
+                    </div>
+                    <div class="col-12">
+                        <picture>
+                            <img class="img-fluid" data-zoomable src="/media/{{product.img.img3}}" alt="">
+                        </picture>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-5">
+                <div class="sticky-top top-5">
+                    <div class="pb-3" data-aos="fade-in">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="d-flex justify-content-start align-items-center disable-child-pointer cursor-pointer"
+                            data-pixr-scrollto
+                            data-target=".reviews">
+                            <div class="rating position-relative d-table">
+                                <div class="stars">
+                                    {{ total_stars |rating_stars|safe}}
+                                </div>
+                            </div>        <small class="text-muted d-inline-block ms-2 fs-bolder">({{review.count}} reviews)</small>
+                        </div>
+                        </div>
+                        
+                        <h1 class="mb-1 fs-2 fw-bold">{{product.title}}</h1>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <p class="fs-4 m-0">${{product.price}}</p>
+                        </div>
+
+                        {%if product.size.all %}
+                        <div class="border-top mt-4 mb-3 product-option">
+                            <small class="text-uppercase pt-4 d-block fw-bolder">
+                                <span class="text-muted">Available Sizes (inch)</span> : <span class="selected-option fw-bold"
+                                    data-pixr-product-option="size">{{product.size.first}}</span>
+                            </small>
+                            <div class="mt-4 d-flex justify-content-start flex-wrap align-items-start">
+                                {% for sizes in product.size.all %}
+                                        <div class="form-check-option form-check-rounded">
+                                            <input
+                                                type="radio" 
+                                                name="product-option-sizes" 
+                                                value="{{sizes}}" 
+                                                id="option-sizes-{{sizes}}">
+                                            <label for="option-sizes-{{sizes}}">
+                                                <small>{{sizes}}</small>
+                                            </label>
+                                        </div>  
+                                {%endfor%}              
+                                    </div>
+                        </div>
+                        {%else%}
+                        <div class="mt-3"></div>
+                        {%endif%}
+                        <div class="my-3 text-uppercase  text-muted">
+                            <small>Available in stalk: {{product.available}}</small>
+                        </div>
+                        <div class="input-group mb-0">
+                            <input type="number" min="1" max="{{product.available}}" id="cart-qty" class="form-control" placeholder="Enter Quantity">
+                        </div>
+                        <button class="btn btn-dark w-100 mt-4 mb-0 hover-lift-sm hover-boxshadow" id="cart-btn" onclick="atom('{{product.id}}')">Add To Shopping Cart</button>
+                             <div class="my-5">
+                                <div class="row">
+                                    <div class="col-12 col-md-4">
+                                        <div class="text-center px-2">
+                                            <i class="ri-run-line ri-2x"></i>
+                                            <small class="d-block mt-1">Fast Delivery</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-4">
+                                        <div class="text-center px-2">
+                                            <i class="ri-secure-payment-line ri-2x"></i>
+                                            <small class="d-block mt-1">Secure Checkout</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-4">
+                                        <div class="text-center px-2">
+                                            <i class="ri-service-line ri-2x"></i>
+                                            <small class="d-block mt-1">Free Returns</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <div class="accordion" id="accordionProduct">
+
+                            {%if product.description %}
+                            {%for desc in product.description.all%}
+
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="heading{{desc.id}}">
+                                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{desc.id}}" aria-expanded="false" aria-controls="collapse{{desc.id}}">
+                                    {{desc.title}} 
+                                  </button>
+                                </h2>
+                                <div id="collapse{{desc.id}}" class="accordion-collapse collapse" aria-labelledby="heading{{desc.id}}" data-bs-parent="#accordionProduct">
+                                  <div class="accordion-body">
+                                      
+                                    <p class="m-0">{{desc.body}} </p>
+                                  </div>
+                                </div>
+                              </div>  
+                            {%endfor%}
+                            {%endif%}
+                            
+                          </div>
+                    </div>                   
+                 </div>
+            </div>
+        </div>
+
+        <div class="row g-0">
+
+            
+            {%include './related.html'%}
+            {%include './reviews.html'%}
+
+        </div>
+</section>
+
+{%endblock%}
+
+
+
+{%block script%} 
+<script>
+     function atom(id) {
+        var y=document.getElementById('cart-btn');
+        var z=document.getElementById('cart-qty').value;
+        var cart=document.getElementsByClassName('cart-count');
+        y.innerHTML='Loading....';
+        $.ajax({
+            type: "GET",
+            url: `/cart/${id}`,
+            data: "add=" + z,
+            success: function (msg) {
+                y.innerHTML='ADDED';
+                cart.forEach(element => {
+                    element.innerHTML=msg;
+                });
+                
+            }
+        });
+    }
+</script>
+
+{%endblock%} 

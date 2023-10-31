@@ -1,0 +1,9 @@
+
+<form action="{{form.get_login_url}}" method="post" class="paypal">
+{%csrf_token%}
+{{form.as_p}}
+
+<input type="submit" value="Pay Now with PayPal">
+</form>
+
+{{form.render}}

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup in {{site_name}}</title>
+    {%include './css.html' %}
+</head>
+
+<body>
+    <section class="mt-0 h-100 d-flex justify-content-center align-items-center p-4">
+
+        <div class="col col-md-8 col-lg-6 col-xxl-5">
+
+            <a class="navbar-brand fw-bold fs-3 flex-shrink-0 order-0 align-self-center justify-content-center d-flex mx-0 px-0"
+                href="/">
+                <div class="d-flex align-items-center">
+                    {{site_name}}
+                </div>
+            </a>
+
+            <div class="shadow-xl p-2 p-lg-3 bg-white">
+                <h1 class="text-center mb-3 fs-2 fw-bold">Create Account</h1>
+                <a href="{% url 'social:begin' 'facebook' %}" class="btn btn-facebook d-block mb-2"><i
+                        class="ri-facebook-circle-fill align-bottom"></i> Login
+                    with Facebook</a>
+                <a href="#" class="btn btn-danger d-block mb-2"><i class="ri-google-fill align-bottom"></i> Login with
+                    Google</a>
+                <span class="text-muted text-center d-block fw-bolder my-4">OR</span>
+                {%if messages %}
+                {%for mess in messages%}
+                <span class="h6 text-{{mess.tags}} d-block text-center"> {{mess}}</span>
+
+                {%endfor%}
+                {%endif%}
+
+                <form action="" method="post">
+                    {%csrf_token%}
+                    <div class="form-group">
+                        <label class="form-label" for="fname">First name</label>
+                        <input type="text" name="fname" class="form-control" id="fname"
+                            placeholder="Enter your first name">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="lname">Last name</label>
+                        <input type="text" name="lname" class="form-control" id="lname"
+                            placeholder="Enter your last name">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="email">Email address</label>
+                        <input type="email" name="email" class="form-control" id="email" placeholder="name@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="password">Password</label>
+                        <input type="password" name="pwd" class="form-control" id="password"
+                            placeholder="Enter your password">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="password2">Password Confirm</label>
+                        <input type="password" name="pwd2" class="form-control" id="password2"
+                            placeholder="Enter your password">
+                    </div>
+                    <button type="submit" class="btn btn-dark d-block w-100 my-4">Sign Up</button>
+                </form>
+                <p class="d-block text-center text-muted">Already registered? <a class="text-muted" href="/login">Login
+                        here.</a></p>
+            </div>
+
+        </div>
+    </section>
+
+    {%include './js.html' %}
+</body>
+
+</html>

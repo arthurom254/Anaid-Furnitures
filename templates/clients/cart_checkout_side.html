@@ -1,0 +1,16 @@
+<div class="col-12 col-lg-5 bg-light pt-lg-10 aside-checkout pb-5 pb-lg-0 my-5 my-lg-0">
+                    <div class="p-4 py-lg-0 pe-lg-0 ps-lg-5">
+                        <div class="pb-3">
+                            {%include './cart_item.html'%}
+                        </div>
+                        <div class="py-4 border-bottom">
+                            <div class="d-flex justify-content-between">
+                                <div>
+                                    <p class="m-0 fw-bold fs-5">Grand Total</p>
+                                    <span class="text-muted small">Inc ${{total_tax}} sales tax</span>
+                                </div>
+                                <p class="m-0 fs-5 fw-bold">${{total_price}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
