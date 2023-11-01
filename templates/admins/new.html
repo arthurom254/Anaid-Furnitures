@@ -2,134 +2,161 @@
 
 {%load static%}
 {%block body%}
-<div class="row quick-action-toolbar">
-    <div class="col-md-12 grid-margin">
-        <div class="card">
-            <div class="card-header d-block d-md-flex">
-                <h5 class="mb-0">Create</h5>
-                <p class="ml-auto mb-0">Create New By Chosing Below<i class="icon-bulb"></i></p>
-            </div>
-            <div class="d-md-flex row m-0 quick-action-btns" role="group" aria-label="Quick action buttons">
-                <div class="col-sm-6 col-md-3 p-3 text-center btn-wrapper">
-                    <button type="button" class="btn px-0"> <i class="icon-user mr-2"></i> Add Category</button>
-                </div>
-                <div class="col-sm-6 col-md-3 p-3 text-center btn-wrapper">
-                    <button type="button" class="btn px-0"><i class="icon-docs mr-2"></i> Add Product</button>
-                </div>
-                <div class="col-sm-6 col-md-3 p-3 text-center btn-wrapper">
-                    <button type="button" class="btn px-0"><i class="icon-folder mr-2"></i> Add Location</button>
-                </div>
-                <div class="col-sm-6 col-md-3 p-3 text-center btn-wrapper">
-                    <button type="button" class="btn px-0"><i class="icon-book-open mr-2"></i>Add </button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="row">
 
-    <div class="col-12 grid-margin">
-        <div class="card">
+<div class="container-fluid">
+
+    <div class="container">
+      <!-- Title -->
+      <div class="d-flex justify-content-between align-items-lg-center py-3 flex-column flex-lg-row">
+        <h2 class="h5 mb-3 mb-lg-0"><a href="../../pages/admin/customers.html" class="text-muted"><i class="bi bi-arrow-left-square me-2"></i></a> Create new product</h2>
+        <div class="hstack gap-3">
+          <button class="btn btn-light btn-sm btn-icon-text"><i class="bi bi-x"></i> <span class="text">Cancel</span></button>
+          <button class="btn btn-primary btn-sm btn-icon-text"><i class="bi bi-save"></i> <span class="text">Save</span></button>
+        </div>
+      </div>
+    
+      <!-- Main content -->
+      <div class="row">
+        <!-- Left side -->
+        <div class="col-lg-8">
+          <!-- Basic information -->
+          <div class="card mb-4">
             <div class="card-body">
-                <form class="form-sample">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group row">
-                                <label class="col-sm-3 col-form-label">Title</label>
-                                <div class="col-sm-9">
-                                    <input type="text" class="form-control" />
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group row">
-                                <label class="col-sm-3 col-form-label">Image</label>
-                                <div class="col-sm-9">
-                                    <input type="file" class="form-control" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group row">
-                                <label class="col-sm-3 col-form-label">Category</label>
-                                <div class="col-sm-9">
-                                    <select class="form-control">
-                                        <option>Category1</option>
-                                        <option>Category2</option>
-                                        <option>Category3</option>
-                                        <option>Category4</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group row">
-                                <label class="col-sm-3 col-form-label">Available Pcs</label>
-                                <div class="col-sm-9">
-                                    <input type="number" class="form-control" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row my-2">
-                        
-                        <div class="col mx-auto">
-                                
-                                    <textarea class="form-control" id="exampleTextarea1" rows="4" placeholder="Item Description"></textarea>
-
-                        </div>
-
-                    </div>
-                    
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group row">
-                                <label class="col-sm-3 col-form-label">Price</label>
-                                <div class="col-sm-9">
-                                   
-                      <div class="input-group">
-                        <div class="input-group-prepend">
-                          <span class="input-group-text bg-primary text-white">$</span>
-                        </div>
-                        <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
-                        <div class="input-group-append">
-                          <span class="input-group-text">.00</span>
-                        </div>
-                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="row">
-                                <div class="col-3">
-                                    <div class="form-check">
-                                        <label class="form-check-label">
-                                            <input type="checkbox" class="form-check-input"
-                                                onchange="var y=document.getElementById('oldprice'); if(y.style.display == 'none'){y.style.display='flex'}else{y.style.display='none'}">
-                                            On Sale </label>
-                                    </div>
-                                </div>
-                                <div class="col-9">
-                                    <div class="input-group"  style="display: none;" id="oldprice">
-                                        <div class="input-group-prepend">
-                                          <span class="input-group-text bg-danger text-white">$</span>
-                                        </div>
-                                        <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="Old Price">
-                                        <div class="input-group-append">
-                                          <span class="input-group-text">.00</span>
-                                        </div>
-                                    </div>
-                                           
-                                </div>
-                            </div>
-                        </div> 
-                       
-                    </div>
-                </form>
+              <h3 class="h6 mb-4">Basic information</h3>
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="mb-3">
+                    <label class="form-label">Title to display</label>
+                    <input type="text" class="form-control">
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="mb-3">
+                    <label class="form-label">Available in stalk</label>
+                    <input type="number" class="form-control">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="mb-3">
+                    <label class="form-label">Price New</label>
+                    <input type="text" placeholder="Ksh" class="form-control">
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="mb-3">
+                    <label class="form-label">Price Old</label>
+                    <input type="text" placeholder="Ksh" class="form-control">
+                  </div>
+                </div>
+              </div>
             </div>
+          </div>
+          <div class="card mb-4">
+            <div class="card-body">
+
+                <div class="row">
+                    <div class="col-lg-6">
+                      <div class="mb-3">
+                        <label class="form-label">Trending</label>
+                        <select class="select2 form-control select2-hidden-accessible" data-select2-placeholder="Select city" data-select2-id="select2-data-7-809c" tabindex="-1" aria-hidden="true">
+                            <option value="d">False</option>
+                            <option value="b">True</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="mb-3">
+                          <label class="form-label">Offer</label>
+                          <select class="select2 form-control select2-hidden-accessible" data-select2-placeholder="Select city" data-select2-id="select2-data-7-809c" tabindex="-1" aria-hidden="true">
+                            
+                            <option value="d">False</option>
+                            <option value="b">True</option>
+                          </select>
+                        </div>
+                      </div>
+                  </div>
+
+            </div>
+            </div>
+          <!-- Address -->
+          <div class="card mb-4">
+            <div class="card-body">
+              <h3 class="h6 mb-4">Description</h3>
+              <div class="mb-3">
+                <label class="form-label">Description Title</label>
+                <input type="text" class="form-control">
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Description text</label>
+                <textarea class="form-control" rows="6"></textarea>
+              </div>
+              <button class="btn btn-primary btn-sm btn-icon-text"><i class="bi bi-save"></i> <span class="text">Add Description</span></button>
+            </div>
+          </div>
         </div>
+        <!-- Right side -->
+        <div class="col-lg-4">
+          <!-- Status -->
+          <div class="card mb-4">
+            <div class="card-body">
+              <h3 class="h6">Category</h3>
+              <select class="form-select">
+                <option value="draft" selected="">Draft</option>
+                <option value="active">Active</option>
+                <option value="active">Inactive</option>
+              </select>
+            </div>
+          </div>
+          <!-- Avatar -->
+          <div class="card mb-4">
+            <div class="card-body">
+              <h3 class="h6">Images</h3>
+              <input class="form-control" type="file">
+              <input class="form-control" type="file">
+              <input class="form-control" type="file">
+              <input class="form-control" type="file">
+            </div>
+          </div>
+          <!-- Notification settings -->
+          <div class="card mb-4">
+            <div class="card-body">
+              <h3 class="h6">Description Listing</h3>
+              <ul class="list-group list-group-flush mx-n2">
+                <li class="list-group-item px-0 d-flex justify-content-between align-items-start">
+                  <div class="ms-2 me-auto">
+                    <h6 class="mb-0">News and updates</h6>
+                    <small>News about product and feature updates.</small>
+                  </div>
+                  <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" role="switch">
+                  </div>
+                </li>
+                <li class="list-group-item px-0 d-flex justify-content-between align-items-start">
+                  <div class="ms-2 me-auto">
+                    <h6 class="mb-0">Tips and tutorials</h6>
+                    <small>Tips on getting more out of the platform.</small>
+                  </div>
+                  <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" role="switch" checked="">
+                  </div>
+                </li>
+                <li class="list-group-item px-0 d-flex justify-content-between align-items-start">
+                  <div class="ms-2 me-auto">
+                    <h6 class="mb-0">User Research</h6>
+                    <small>Get involved in our beta testing program.</small>
+                  </div>
+                  <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" role="switch">
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-</div>
+    
+      </div>
 {%endblock%}

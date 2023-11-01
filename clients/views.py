@@ -4,7 +4,7 @@ from django.urls import reverse
 from django.conf import settings
 from paypal.standard.forms import PayPalPaymentsForm
 from django.http import HttpResponse
-from administrator.models import UserProfile, Category, Item, Review, Order
+from administrator.models import UserProfile, Category, Item, Review, Order, Cart, CartToken
 from django.contrib.auth.decorators import login_required
 import uuid
 from django.contrib import messages
@@ -57,7 +57,13 @@ def product_more(request, category, id):
         related=Item.objects.filter(category=category_1).exclude(id=id)[:12]
         review = Review.objects.filter(item=Item(id=id))
         total_review=review.count()
-
+        try:
+            token=request.COOKIES.get('cart_cookie')
+            cart_token=CartToken.objects.get(token=token)
+            cart=Cart.objects.get(token=cart_token,item=Item(id=id) )
+            mycart=cart.qty
+        except:
+            mycart=''
         r1=Review.objects.filter(Q(stars__gte=1,stars__lt=2 ), item=product).count()
         r2=Review.objects.filter(Q(stars__gte=2,stars__lt=3 ), item=product).count()
         r3=Review.objects.filter(Q(stars__gte=3,stars__lt=4 ), item=product).count()
@@ -83,6 +89,7 @@ def product_more(request, category, id):
             'review':review[:10],
             'total_stars':total_stars,
             'review_each':review_each,
+            'mycart':mycart
         }
         return render(request, 'clients/product_more.html', context)
 

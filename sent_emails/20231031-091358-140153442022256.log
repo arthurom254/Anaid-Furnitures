@@ -1,0 +1,68 @@
+Content-Type: multipart/alternative;
+ boundary="===============1866947655419745264=="
+MIME-Version: 1.0
+Subject: :  Placed an order
+From: webmaster@localhost
+To: admn@kipekee.com
+Date: Tue, 31 Oct 2023 09:13:58 -0000
+Message-ID: <169874363863.14376.3142226567442756229@Atom-F11>
+
+--===============1866947655419745264==
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+
+ , Placed an order
+Items Ordered
+
+    
+        Quantity
+        Items
+        Price
+    
+    
+    
+        1
+        Office Station
+        34
+
+    
+    
+
+
+&copy; kipekee
+
+
+--===============1866947655419745264==
+Content-Type: text/html; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+
+<h2 style="color: gray;"> , Placed an order</h2>
+<h3 style="color:darkorchid;">Items Ordered</h3>
+<table border="1" style="border-collapse: collapse; border:1px; ">
+    <tr style="background-color: cornflowerblue; color: white;">
+        <th>Quantity</th>
+        <th style="width: 100%;">Items</th>
+        <th>Price</th>
+    </tr>
+    
+    <tr style="border: 1px solid black;">
+        <td>1</td>
+        <td style="width: 100%;">Office Station</td>
+        <td>34</td>
+
+    </tr>
+    
+</table>
+
+<p>&copy; kipekee</p>
+
+
+--===============1866947655419745264==--
+
+-------------------------------------------------------------------------------
