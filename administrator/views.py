@@ -5,6 +5,8 @@ from .models import UserProfile
 from django.contrib.admin.models import LogEntry
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
+from administrator.models import Item
+from django.core.paginator import Paginator, EmptyPage
 
 @csrf_exempt
 def login(request):
@@ -61,15 +63,19 @@ def signup(request):
         else:
             # messages.info(request,'Create your account')
             return render(request, 'clients/signup.html') 
+def next(request):
+    try:
+        next=request.META['PATH_INFO']
+    except:
+        next='/'
+    return next
 
 def profile(request):
     if request.user.is_authenticated:
         if request.user.is_superuser:
             activity=LogEntry.objects.filter(user_id=request.user.id)[:20]
-            person=UserProfile.objects.get(user=User(id=request.user.id))
             data=list(activity.values())
             context={
-                'person':person,
                 'activity':activity,
             }
             messages.success(request, "Welcome Back")
@@ -83,32 +89,107 @@ def profile(request):
 
 
 def dashboard(request):
-    person=UserProfile.objects.get(user=User(id=request.user.id))
-    context={
-        'person':person,
-    }
-    return render(request, 'admins/dashboard.html', context)
+    nxt=next(request)
+    if request.user.is_authenticated:
+        if request.user.is_superuser:
+            context={
+            }
+            return render(request, 'admins/dashboard.html', context)
+        else:
+            return redirect('/')
+    else:
+        next_str=f"/login?next={nxt}"
+        return redirect(next_str)
+    
 
 
 def orders(request):
-    person=UserProfile.objects.get(user=User(id=request.user.id))
-    context={
-        'person':person,
-    }
-    return render(request, 'admins/orders.html', context)
+    nxt=next(request)
+    if request.user.is_authenticated:
+        if request.user.is_superuser:
+            context={
+            }
+            return render(request, 'admins/orders.html', context)
+        else:
+            return redirect('/')
+    else:
+        next_str=f"/login?next={nxt}"
+        return redirect(next_str)
+    
 
 
 def new(request):
-    person=UserProfile.objects.get(user=User(id=request.user.id))
+    try:
+        action=request.GET['action']
+        id=request.GET['id']
+    except:
+        action = None
+        id=None
+    if request.method == 'POST':
+        title=request.POST['title']
+        available=request.POST['available']
+        price1=request.POST['price1']
+        price2=request.POST['price2']
+        trending=request.POST['trending']
+        offer=request.POST['offer']
+
+        if action is not None and id is not None:
+            if action == 'delete':
+                print("Deleted")
+            else:
+                print("Editing")
+        else:
+            pass
     context={
-        'person':person,
     }
     return render(request, 'admins/new.html', context)
 
 def edit(request):
-    person=UserProfile.objects.get(user=User(id=request.user.id))
-    context={
-        'person':person,
-    }
-    return render(request, 'admins/edit.html', context)
+    nxt=next(request)
+    try:
+        q=request.GET['q']
+    except:
+        q=None
+    if request.user.is_authenticated:
+        if request.user.is_superuser:
+            if q is not None:
+                result=Item.objects.filter(title__icontains=q, outofstalk='False')
+                page_n=request.GET.get('page',1)
+                p=Paginator(result, 10)
+                try:
+                    items=p.page(page_n)
+                except EmptyPage:
+                    items=p.page(1)
+            else:
+                items=Item.objects.all()
+            context={
+                'items':items,
+                'q':q,
+            }
+            return render(request, 'admins/edit.html', context)
+        else:
+            return redirect('/')
+    else:
+        next_str=f"/login?next={nxt}"
+        return redirect(next_str)
 
+def blog(request):
+    nxt=next(request)
+    if request.user.is_authenticated:
+        if request.user.is_superuser:
+            if request.method=='POST':
+                title=request.POST['title']
+                img=request.POST['img']
+                body=request.POST['body']
+                # Hello World
+            else:
+                context={
+                }
+                return render(request, 'admins/blog.html', context)
+        else:
+            return redirect('/')
+    else:
+        next_str=f"/login?next={nxt}"
+        return redirect(next_str)
+    
+    

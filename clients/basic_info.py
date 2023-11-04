@@ -1,10 +1,14 @@
-from administrator.models import Cart, CartToken, Category, SiteSettings
+from administrator.models import Cart, CartToken, Category, SiteSettings, UserProfile
+from django.contrib.auth.models import User
 from django.db.models import Sum
 
 def information(request):
     categry=Category.objects.all()[:16]
     info=SiteSettings.objects.filter().first()
-
+    try:
+        person, created=UserProfile.objects.get_or_create(user=User(id=request.user.id))
+    except:
+        person=None
     try:
         site_name=info.sites_name
     except:
@@ -37,6 +41,7 @@ def information(request):
         'total_price':total_price,
         'total_tax':round(total_tax, 2),
         'info':info,
+        'person':person,
     }
     return context
 

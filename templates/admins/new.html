@@ -5,17 +5,21 @@
 
 <div class="container-fluid">
 
-    <div class="container">
-      <!-- Title -->
-      <div class="d-flex justify-content-between align-items-lg-center py-3 flex-column flex-lg-row">
-        <h2 class="h5 mb-3 mb-lg-0"><a href="../../pages/admin/customers.html" class="text-muted"><i class="bi bi-arrow-left-square me-2"></i></a> Create new product</h2>
-        <div class="hstack gap-3">
-          <button class="btn btn-light btn-sm btn-icon-text"><i class="bi bi-x"></i> <span class="text">Cancel</span></button>
-          <button class="btn btn-primary btn-sm btn-icon-text"><i class="bi bi-save"></i> <span class="text">Save</span></button>
-        </div>
+  <div class="container">
+    <form action="" method="post">
+      {%csrf_token%}
+    <!-- Title -->
+    <div class="d-flex justify-content-between align-items-lg-center py-3 flex-column flex-lg-row">
+      <h2 class="h5 mb-3 mb-lg-0"><a href="./" class="text-muted"><i class=" icon-arrow-left me-2"></i></a> Create new product</h2>
+      <div class="hstack gap-3">
+        <!-- <button class="btn btn-light btn-sm btn-icon-text"><i class="bi bi-x"></i> <span
+            class="text">Cancel</span></button> -->
+        <button class="btn btn-primary btn-sm btn-icon-text" type="submit"><i class=" icon-check"></i> <span
+            class="text">Save</span></button>
       </div>
-    
-      <!-- Main content -->
+    </div>
+
+    <!-- Main content -->
       <div class="row">
         <!-- Left side -->
         <div class="col-lg-8">
@@ -27,13 +31,13 @@
                 <div class="col-lg-6">
                   <div class="mb-3">
                     <label class="form-label">Title to display</label>
-                    <input type="text" class="form-control">
+                    <input type="text" name="title" class="form-control">
                   </div>
                 </div>
                 <div class="col-lg-6">
                   <div class="mb-3">
                     <label class="form-label">Available in stalk</label>
-                    <input type="number" class="form-control">
+                    <input type="number" name="available" class="form-control">
                   </div>
                 </div>
               </div>
@@ -41,13 +45,13 @@
                 <div class="col-lg-6">
                   <div class="mb-3">
                     <label class="form-label">Price New</label>
-                    <input type="text" placeholder="Ksh" class="form-control">
+                    <input type="text" name="price1" placeholder="Ksh" class="form-control">
                   </div>
                 </div>
                 <div class="col-lg-6">
                   <div class="mb-3">
                     <label class="form-label">Price Old</label>
-                    <input type="text" placeholder="Ksh" class="form-control">
+                    <input type="text" name="price2" placeholder="Ksh" class="form-control">
                   </div>
                 </div>
               </div>
@@ -56,43 +60,49 @@
           <div class="card mb-4">
             <div class="card-body">
 
-                <div class="row">
-                    <div class="col-lg-6">
-                      <div class="mb-3">
-                        <label class="form-label">Trending</label>
-                        <select class="select2 form-control select2-hidden-accessible" data-select2-placeholder="Select city" data-select2-id="select2-data-7-809c" tabindex="-1" aria-hidden="true">
-                            <option value="d">False</option>
-                            <option value="b">True</option>
-                        </select>
-                      </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="mb-3">
-                          <label class="form-label">Offer</label>
-                          <select class="select2 form-control select2-hidden-accessible" data-select2-placeholder="Select city" data-select2-id="select2-data-7-809c" tabindex="-1" aria-hidden="true">
-                            
-                            <option value="d">False</option>
-                            <option value="b">True</option>
-                          </select>
-                        </div>
-                      </div>
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="mb-3">
+                    <label class="form-label">Trending</label>
+                    <select name="trending" class="select2 form-control select2-hidden-accessible"
+                      data-select2-placeholder="Select city" data-select2-id="select2-data-7-809c" tabindex="-1"
+                      aria-hidden="true">
+                      <option value="0">False</option>
+                      <option value="1">True</option>
+                    </select>
                   </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="mb-3">
+                    <label class="form-label">Offer</label>
+                    <select name="offer" class="select2 form-control select2-hidden-accessible"
+                      data-select2-placeholder="Select city" data-select2-id="select2-data-7-809c" tabindex="-1"
+                      aria-hidden="true">
+
+                      <option value="0">False</option>
+                      <option value="1">True</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
 
             </div>
-            </div>
-          <!-- Address -->
+          </div>
+          <!-- Desc -->
           <div class="card mb-4">
             <div class="card-body">
               <h3 class="h6 mb-4">Description</h3>
               <div class="mb-3">
+                <input type="hidden" name="d_id" id="d_id" value="0">
                 <label class="form-label">Description Title</label>
-                <input type="text" class="form-control">
+                <input type="text" id="description_h" class="form-control">
               </div>
               <div class="mb-3">
                 <label class="form-label">Description text</label>
-                <textarea class="form-control" rows="6"></textarea>
+                <div class="" id="description_b"></div>
               </div>
-              <button class="btn btn-primary btn-sm btn-icon-text"><i class="bi bi-save"></i> <span class="text">Add Description</span></button>
+              <a href="#" class="btn btn-primary btn-sm btn-icon-text" onclick="description()"><i class="bi bi-save"></i>
+                <span class="text">Add Description</span></a>
             </div>
           </div>
         </div>
@@ -102,61 +112,89 @@
           <div class="card mb-4">
             <div class="card-body">
               <h3 class="h6">Category</h3>
-              <select class="form-select">
+              <select class="form-select form-control">
                 <option value="draft" selected="">Draft</option>
                 <option value="active">Active</option>
                 <option value="active">Inactive</option>
               </select>
+              <h3 class="h6 py-1">Actual Category</h3>
+              <label for="category_">Books</label>
+              <input type="hidden" name="category_" value="">
             </div>
           </div>
-          <!-- Avatar -->
+
           <div class="card mb-4">
             <div class="card-body">
               <h3 class="h6">Images</h3>
-              <input class="form-control" type="file">
-              <input class="form-control" type="file">
-              <input class="form-control" type="file">
-              <input class="form-control" type="file">
+              <input class="form-control" name="img" type="file" accept="image/*">
+              <input class="form-control" name="img1" type="file" accept="image/*">
+              <input class="form-control" type="file" name="img2" accept="image/*">
+              <input class="form-control" type="file" name="img3" accept="image/*">
             </div>
           </div>
-          <!-- Notification settings -->
+
           <div class="card mb-4">
             <div class="card-body">
               <h3 class="h6">Description Listing</h3>
-              <ul class="list-group list-group-flush mx-n2">
-                <li class="list-group-item px-0 d-flex justify-content-between align-items-start">
+              <ul class="list-group list-group-flush mx-n2" id="description">
+
+                <!-- <li class="list-group-item px-0 d-flex justify-content-between align-items-start">
                   <div class="ms-2 me-auto">
-                    <h6 class="mb-0">News and updates</h6>
-                    <small>News about product and feature updates.</small>
+                    <h6 class="mb-0">Description</h6>
+                    <small>Description body truncated to 100 char.</small>
                   </div>
                   <div class="form-check form-switch">
                     <input class="form-check-input" type="checkbox" role="switch">
                   </div>
-                </li>
-                <li class="list-group-item px-0 d-flex justify-content-between align-items-start">
-                  <div class="ms-2 me-auto">
-                    <h6 class="mb-0">Tips and tutorials</h6>
-                    <small>Tips on getting more out of the platform.</small>
-                  </div>
-                  <div class="form-check form-switch">
-                    <input class="form-check-input" type="checkbox" role="switch" checked="">
-                  </div>
-                </li>
-                <li class="list-group-item px-0 d-flex justify-content-between align-items-start">
-                  <div class="ms-2 me-auto">
-                    <h6 class="mb-0">User Research</h6>
-                    <small>Get involved in our beta testing program.</small>
-                  </div>
-                  <div class="form-check form-switch">
-                    <input class="form-check-input" type="checkbox" role="switch">
-                  </div>
-                </li>
+                  <input type="hidden" name="description_h_1">
+                  <input type="hidden" name="description_b_1">
+                </li> -->
+
+
               </ul>
             </div>
           </div>
         </div>
       </div>
-    </div>
-    
-      </div>
+    </form>
+  </div>
+
+</div>
+
+<script>
+  var count = 2;
+  function description() {
+    description_h = document.getElementById('description_h').value;
+    description_b = document.getElementById('description_b').firstChild.innerHTML;
+    var x = `
+          <li id="li${count}" class="list-group-item px-0 d-flex justify-content-between align-items-start">
+                  <div class="ms-2 me-auto">
+                    <h6 style="cursor:pointer;" class="my-1" onclick="edit_description(${count})">${description_h} <i class="icon-pencil menu-icon"></i> </h6>
+                    <small>${description_b}</small>
+                  </div>
+                  <div class="form-check form-switch">
+                    <i class=" icon-close" onclick="remove_description(${count})" type="checkbox" role="switch"></i>
+                  </div>
+                  <input type="hidden" id='description_head_${count}' name='description_h_${count}' value='${description_h}'>
+                  <input type="hidden" id='description_body_${count}' name='description_b_${count}' value='${description_b}'>
+          </li>
+          `;
+    document.getElementById('description').innerHTML += x;
+    count++;
+    description_h = '';
+    description_b = '';
+  }
+
+  function remove_description(id) {
+    document.getElementById(`li${id}`).outerHTML = '';
+  }
+  function edit_description(id) {
+    description_head = document.getElementById(`description_head_${id}`).value;
+    description_body = document.getElementById(`description_body_${id}`).value;
+    description_h = document.getElementById('description_h').value = description_head;
+    description_b = document.getElementById('description_b').firstChild.innerHTML = description_body;
+
+    remove_description(id);
+  }
+</script>
 {%endblock%}

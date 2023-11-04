@@ -1,0 +1,36 @@
+{% extends 'admins/base.html'%}
+
+{%load static%}
+{%block body%}
+
+<form method="post" action="">
+    <div class="card mb-4">
+        <div class="card-body">
+            <h3 class="h6 mb-4">Blog Secttion</h3>
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="mb-3">
+                        <label class="form-label">Title to display</label>
+                        <input type="text" name="title" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Blog text</label>
+                        <div class="" id="description_b"></div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <!-- Status -->
+                    <div class="card mb-4">
+                      <div class="card-body">
+                        <h3 class="h6">Image</h3>
+                        <input type="file" id="imageInput" class="form-control" accept="image/*">
+                        <!-- <img id="imagePreview" src="" alt="Image Preview"> -->
+                        <button type="submit" class="btn btn-success mx-auto my-2">Post</button>
+                      </div>
+                    </div>                
+                </div>
+        </div>
+    </div>
+    </div>
+</form>
+{%endblock%}

@@ -8,6 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>Welcome {{user.username}}</title>
   <!-- plugins:css -->
+  <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/quill/1.3.7/quill.snow.css">
   <link rel="stylesheet" href="{% static 'admin/vendors/simple-line-icons/css/simple-line-icons.css' %}">
   <link rel="stylesheet" href="{% static 'admin/vendors/flag-icon-css/css/flag-icon.min.css' %}">
   <link rel="stylesheet" href="{% static 'admin/vendors/css/vendor.bundle.base.css' %}">
@@ -22,19 +23,19 @@
       <div class="navbar-brand-wrapper d-flex align-items-center">
         <a class="navbar-brand brand-logo" href="/">
           <!-- <img src="{% static 'admin/images/favicon.png' %}" alt="logo" class="logo-dark" /> -->
-          <h1 class="text-light">Kipekee</h1>
+          <h1 class="text-light">{{site_name}}</h1>
         </a>
         <a class="navbar-brand brand-logo-mini" href="/">
           <!-- <img src="{% static 'admin/images/favicon.png'%}" alt="logo" />-->
-          <p class="text-light">Kipekee</p>
+          <p class="text-light">{{site_name}}</p>
           </a>
       </div>
       <div class="navbar-menu-wrapper d-flex align-items-center flex-grow-1">
         <h5 class="mb-0 font-weight-medium d-none d-lg-flex">Welcome {{user.first_name}}</h5>
         <ul class="navbar-nav navbar-nav-right ml-auto">
-          <form class="search-form d-none d-md-block" action="#">
+          <form class="search-form d-none d-md-block" action="/edit">
             <i class="icon-magnifier"></i>
-            <input type="search" class="form-control" placeholder="Search Here" title="Search here">
+            <input type="search" class="form-control" name="q" placeholder="Search Here" title="Search here">
           </form>
           <li class="nav-item"><a href="#" class="nav-link"><i class="icon-basket-loaded"></i></a></li>
           <li class="nav-item"><a href="#" class="nav-link"><i class="icon-chart"></i></a></li>
@@ -166,18 +167,18 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-              <span class="menu-title">Create</span>
+              <span class="menu-title">Products</span>
               <i class="icon-pencil menu-icon"></i>
             </a>
             <div class="collapse" id="ui-basic">
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item"> <a class="nav-link" href="/new">New</a></li>
-                <li class="nav-item"> <a class="nav-link" href="/edit">Edit</a></li>
+                <li class="nav-item"> <a class="nav-link" href="/edit">List</a></li>
               </ul>
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/blog">
+            <a class="nav-link" href="/bloger">
               <span class="menu-title">Blogs</span>
               <i class="icon-book-open menu-icon"></i>
             </a>
@@ -218,7 +219,6 @@
             new bootstrap.Alert(alert)
           })
         </script>
-        
         {% endfor %}
         {% endif %}
          {%block body%}
@@ -232,10 +232,10 @@
     <!-- partial: partials/_footer.html -->
     <footer class="footer">
       <div class="d-sm-flex justify-content-center justify-content-sm-between">
-        <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © kipekee
+        <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © {{site_name}}
           2030</span>
         <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> <a href="/"
-            target="_blank">Kipekee</a> Home</span>
+            target="_blank">{{site_name}}</a> Home</span>
       </div>
     </footer>
     <!-- partial -->
@@ -253,11 +253,20 @@
   <!-- inject:js -->
   <script src="{% static 'admin/js/off-canvas.js' %}"></script>
   <script src="{% static 'admin/js/misc.js'%} "></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quill/1.3.7/quill.min.js"></script>
+
   <script>
     setTimeout( ()=>{
       $(".alert").alert("close");
     }, 3000)
   </script>
+        <script>
+          var quill2 = new Quill('#description_b', {
+        placeholder: 'Type your text here',
+        theme: 'snow'
+    });
+        </script>
+        
   <!-- endinject -->
   <!-- Custom js for this page -->
   <!-- End custom js for this page -->
