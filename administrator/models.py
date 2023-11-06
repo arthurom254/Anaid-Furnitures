@@ -42,16 +42,24 @@ class Description(models.Model):
 
 class Item(models.Model):           
     title = models.CharField(max_length=100, unique=True)
-    description = models.ManyToManyField(Description)
+    description = models.ManyToManyField(Description, blank=True)
     img=models.ForeignKey(ItemImg, on_delete=models.CASCADE)
     price=models.DecimalField(max_digits=10, decimal_places=2)
     price2=models.DecimalField(max_digits=10, decimal_places=2, blank=True)
-    category=models.ManyToManyField(Category)
+    category=models.ManyToManyField(Category, blank=True)
     trending=models.CharField(max_length=5, choices=TRUE_FALSE, null=True)
     available=models.IntegerField()
     offer=models.CharField(max_length=5, choices=TRUE_FALSE, default='False')
     outofstalk=models.CharField(max_length=5, choices=TRUE_FALSE,default="False")
     size=models.ManyToManyField(Sizes, blank=True)
+
+    @classmethod
+    def addCategory(cls, new_item, category):
+        new_item.description.add(category)
+
+    @classmethod
+    def addDescription(cls, new_item, desc):
+        new_item.description.add(desc)
 
     def get_absolute_url(self):
         first=self.category.first()

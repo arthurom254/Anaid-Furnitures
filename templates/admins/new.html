@@ -6,7 +6,7 @@
 <div class="container-fluid">
 
   <div class="container">
-    <form action="" method="post">
+    <form action="" method="post" enctype="multipart/form-data">
       {%csrf_token%}
     <!-- Title -->
     <div class="d-flex justify-content-between align-items-lg-center py-3 flex-column flex-lg-row">
@@ -31,13 +31,13 @@
                 <div class="col-lg-6">
                   <div class="mb-3">
                     <label class="form-label">Title to display</label>
-                    <input type="text" name="title" class="form-control">
+                    <input type="text" name="title" class="form-control" value="{{item.title}}">
                   </div>
                 </div>
                 <div class="col-lg-6">
                   <div class="mb-3">
                     <label class="form-label">Available in stalk</label>
-                    <input type="number" name="available" class="form-control">
+                    <input type="number" name="available" class="form-control" value="{{item.available}}">
                   </div>
                 </div>
               </div>
@@ -45,13 +45,13 @@
                 <div class="col-lg-6">
                   <div class="mb-3">
                     <label class="form-label">Price New</label>
-                    <input type="text" name="price1" placeholder="Ksh" class="form-control">
+                    <input type="text" name="price1" placeholder="Ksh" value="{{item.price}}" class="form-control">
                   </div>
                 </div>
                 <div class="col-lg-6">
                   <div class="mb-3">
                     <label class="form-label">Price Old</label>
-                    <input type="text" name="price2" placeholder="Ksh" class="form-control">
+                    <input type="text" name="price2" placeholder="Ksh" value="{{item.price2}}" class="form-control">
                   </div>
                 </div>
               </div>
@@ -67,6 +67,9 @@
                     <select name="trending" class="select2 form-control select2-hidden-accessible"
                       data-select2-placeholder="Select city" data-select2-id="select2-data-7-809c" tabindex="-1"
                       aria-hidden="true">
+                      {%if item %}
+                      <option value="{% if item.trending == 'True' %}1{%else%}0{%endif%}">{{item.trending}}</option>
+                      {%endif%}
                       <option value="0">False</option>
                       <option value="1">True</option>
                     </select>
@@ -78,7 +81,9 @@
                     <select name="offer" class="select2 form-control select2-hidden-accessible"
                       data-select2-placeholder="Select city" data-select2-id="select2-data-7-809c" tabindex="-1"
                       aria-hidden="true">
-
+                      {%if item %}
+                      <option value="{% if item.offer == 'True' %}1{%else%}0{%endif%}">{{item.offer}}</option>
+                      {%endif%}
                       <option value="0">False</option>
                       <option value="1">True</option>
                     </select>
@@ -112,14 +117,26 @@
           <div class="card mb-4">
             <div class="card-body">
               <h3 class="h6">Category</h3>
-              <select class="form-select form-control">
-                <option value="draft" selected="">Draft</option>
-                <option value="active">Active</option>
-                <option value="active">Inactive</option>
-              </select>
-              <h3 class="h6 py-1">Actual Category</h3>
-              <label for="category_">Books</label>
-              <input type="hidden" name="category_" value="">
+              <!-- <select class="form-select form-control"> -->
+                {%for c in category%}
+                <!-- <option value="{{c.id}}">{{c.title}}</option> -->
+                <div class="form-check mx-3">
+                  <input class="form-check-input" type="checkbox" {%if c in item.category.all %} checked {%endif%}  name="category" value="{{c.id}}" id="{{c.id}}">
+                  <label class="form-check-label" for="{{c.id}}">
+                    {{c.title}}
+                  </label>
+                </div>
+                {%endfor%}
+              <!-- </select> -->
+              <!-- <h3 class="h6 py-1">Actual Category</h3> -->
+              <!-- {%if item %} -->
+              <!-- <ul>
+              {%for c in item.category.all%}
+              <li>{{c.title}}</li>
+              <input type="hidden" name="category_{{c.id}}" value="{{c.id}}">
+              {%endfor%}
+              </ul>
+              {%endif%} -->
             </div>
           </div>
 
@@ -127,9 +144,9 @@
             <div class="card-body">
               <h3 class="h6">Images</h3>
               <input class="form-control" name="img" type="file" accept="image/*">
-              <input class="form-control" name="img1" type="file" accept="image/*">
-              <input class="form-control" type="file" name="img2" accept="image/*">
-              <input class="form-control" type="file" name="img3" accept="image/*">
+              <input class="form-control" name="img" type="file" accept="image/*">
+              <input class="form-control" type="file" name="img" accept="image/*">
+              <input class="form-control" type="file" name="img" accept="image/*">
             </div>
           </div>
 
@@ -137,7 +154,7 @@
             <div class="card-body">
               <h3 class="h6">Description Listing</h3>
               <ul class="list-group list-group-flush mx-n2" id="description">
-
+                {%if item %}
                 <!-- <li class="list-group-item px-0 d-flex justify-content-between align-items-start">
                   <div class="ms-2 me-auto">
                     <h6 class="mb-0">Description</h6>
@@ -149,8 +166,20 @@
                   <input type="hidden" name="description_h_1">
                   <input type="hidden" name="description_b_1">
                 </li> -->
-
-
+                {%for desc in item.description.all%}
+                <li id="li{{desc.id}}" class="list-group-item px-0 d-flex justify-content-between align-items-start">
+                  <div class="ms-2 me-auto">
+                    <h6 style="cursor:pointer;" class="my-1" onclick="edit_description(`{{desc.id}}`)">{{desc.title}} <i class="icon-pencil menu-icon"></i> </h6>
+                    <small>{{desc.body}}</small>
+                  </div>
+                  <div class="form-check form-switch">
+                    <i class=" icon-close" onclick="remove_description(`{{desc.id}}`)" type="checkbox" role="switch"></i>
+                  </div>
+                  <input type="hidden" id='description_head_{{desc.id}}' name='description_h' value='{{desc.title}}'>
+                  <input type="hidden" id='description_body_{{desc.id}}' name='description_b' value='{{desc.body}}'>
+                </li>
+                {%endfor%}
+                {%endif%}
               </ul>
             </div>
           </div>
@@ -175,8 +204,8 @@
                   <div class="form-check form-switch">
                     <i class=" icon-close" onclick="remove_description(${count})" type="checkbox" role="switch"></i>
                   </div>
-                  <input type="hidden" id='description_head_${count}' name='description_h_${count}' value='${description_h}'>
-                  <input type="hidden" id='description_body_${count}' name='description_b_${count}' value='${description_b}'>
+                  <input type="hidden" id='description_head_${count}' name='description_h' value='${description_h}'>
+                  <input type="hidden" id='description_body_${count}' name='description_b' value='${description_b}'>
           </li>
           `;
     document.getElementById('description').innerHTML += x;

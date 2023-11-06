@@ -43,10 +43,10 @@
       </table>
       <div class="text-right m-2">
             {% if items.has_previous %}
-            <a href="?q={{q}}&page={{items.previous_page_number}}" class="btn btn-primary btn-sm btn-icon-text"><i class=" icon-arrow-left me-2"></i></a>
+            <a href="?{%if q%}q={{q}}&{%endif%}page={{items.previous_page_number}}" class="btn btn-primary btn-sm btn-icon-text"><i class=" icon-arrow-left me-2"></i></a>
             {% endif %}
             {% if items.has_next %}
-            <a href="?q={{q}}&page={{items.next_page_number}}" class="btn btn-primary btn-sm btn-icon-text"><i class=" icon-arrow-right me-2"></i></a>
+            <a href="?{%if q%}q={{q}}&{%endif%}page={{items.next_page_number}}" class="btn btn-primary btn-sm btn-icon-text"><i class=" icon-arrow-right me-2"></i></a>
             {% endif %}
         </div>
       

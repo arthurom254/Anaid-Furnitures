@@ -4,10 +4,11 @@ from . import views, cart, checkout, search, api, tests, pesapal, money
 # from mpesa.urls import mpesa_urls
 # from .paypal_test import paypal_payment_received
 # import django_pesapal
+from .mpesa import index
 app_name='clients'
 urlpatterns=[
     path('', views.home, name="Home"),
-    # path('mpesa/', include(mpesa_urls)),
+    path('mpesa/', index ,name="M-Pesa"),
     # path('view/<str:id>', views.product_more_1, name="Product More Details" ),
     # path('checkout', views.checkout101, name='Checkout'),
     path('payment-complete', views.paypal_payment_complete, name="Checkout Payment Complete"),

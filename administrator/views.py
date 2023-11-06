@@ -1,13 +1,13 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages,auth
 from django.contrib.auth.models import User
-from .models import UserProfile
+from .models import UserProfile, Category, Description, ItemImg
 from django.contrib.admin.models import LogEntry
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from administrator.models import Item
 from django.core.paginator import Paginator, EmptyPage
-
+from django.http import HttpResponse
 @csrf_exempt
 def login(request):
     if request.method=='POST':
@@ -29,7 +29,6 @@ def login(request):
         if request.user.is_authenticated:
             return redirect('/')
         else:
-            # messages.info(request, 'Log in')
             return render(request, 'clients/login.html')
 
 def logout(request):
@@ -61,7 +60,6 @@ def signup(request):
         if request.user.is_authenticated:
             return redirect('/')
         else:
-            # messages.info(request,'Create your account')
             return render(request, 'clients/signup.html') 
 def next(request):
     try:
@@ -79,7 +77,6 @@ def profile(request):
                 'activity':activity,
             }
             messages.success(request, "Welcome Back")
-            # return JsonResponse(data, safe=False)
             return render(request, 'admins/profile.html', context)
         else:
             messages.info(request, 'You are redirected to this page becaue admin only page')
@@ -132,17 +129,75 @@ def new(request):
         price2=request.POST['price2']
         trending=request.POST['trending']
         offer=request.POST['offer']
+        productImg=None
+        if 'img' in request.FILES:
+            img=request.FILES.getlist('img')
+            try:
+                img1=img[0]
+                img2=img[1]
+                img3=img[2]
+                img4=img[3]
+                productImg=ItemImg.objects.create(title=title)
+                productImg.img=img1
+                productImg.img1=img2
+                productImg.img2=img3
+                productImg.img3=img4
+                productImg.save()
+            except:
+                messages.info(request,'Image Error: ensure you use 4 images')
+                return redirect(next(request))
+        category=request.POST.getlist('category')
+        description_h=request.POST.getlist('description_h')
+        description_b=request.POST.getlist('description_b')
 
-        if action is not None and id is not None:
-            if action == 'delete':
-                print("Deleted")
-            else:
-                print("Editing")
+        if trending == '1':
+            trending='True'
         else:
-            pass
-    context={
-    }
-    return render(request, 'admins/new.html', context)
+            trending='False'
+        
+
+        if offer == '1':
+            offer='True'
+        else:
+            offer='False'
+        try:
+            item=Item.objects.create(title=title,price=price1,img=productImg, price2=price2, available=available, offer=offer, trending=trending )
+        except:
+            try:
+                item=Item.objects.get(title=title)
+                item.price=price1
+                item.price2=price2
+                if productImg is not None:
+                    item.img=productImg
+                item.available=available
+                item.offer=offer
+                item.trending=trending
+                item.category.clear()
+                item.description.clear()
+                print("Save")
+            except:
+                messages.info(request, "Cannot create this product.")
+                return redirect(next(request))
+        for c in category:
+            category=Category.objects.get(id=c)
+            item.category.add(category)
+        for index,d_head in enumerate(description_h):
+            desc, c=Description.objects.get_or_create(title=d_head, body=description_b[index])
+            item.description.add(desc)
+        print("Item is ", item)
+        item.save()
+        return HttpResponse(f"{category} then id is {id} : head-{description_h} body-{description_b}")
+        
+    else:
+        if action is not None and id is not None:
+            item=Item.objects.get(id=id) #Or 404
+        else:
+            item=None
+        context={
+            'item':item
+            
+        }
+        return render(request, 'admins/new.html', context)
 
 def edit(request):
     nxt=next(request)
@@ -161,7 +216,13 @@ def edit(request):
                 except EmptyPage:
                     items=p.page(1)
             else:
-                items=Item.objects.all()
+                result=Item.objects.all()
+                page_n=request.GET.get('page',1)
+                p=Paginator(result, 10)
+                try:
+                    items=p.page(page_n)
+                except EmptyPage:
+                    items=p.page(1)
             context={
                 'items':items,
                 'q':q,

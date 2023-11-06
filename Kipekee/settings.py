@@ -25,9 +25,7 @@ INSTALLED_APPS = [
     'paypal.standard.ipn',
     'django.contrib.sites',
     'django.contrib.sitemaps',
-    # 'mpesa',
-    # 'django_pesapal',
-    # 'pesapal',
+    'django_daraja',
 ]
 
 MIDDLEWARE = [
@@ -149,8 +147,8 @@ EMAIL_FILE_PATH=BASE_DIR / 'sent_emails'
 # EMAIL_HOST_PASSWORD='11111111111'
 # EMAIL_PORT=587
 
-PESAPAL_CONSUMER_SECRET = 'osGQ364R49cXKeOYSpaOnT++rHs='
-PESAPAL_CONSUMER_KEY = 'qkio1BGGYAXTu2JOfm7XSXNruoZsrqEW'
+PESAPAL_CONSUMER_SECRET = ''
+PESAPAL_CONSUMER_KEY = ''
 PESAPAL_TRANSACTION_DEFAULT_REDIRECT_URL = 'clients:pesapal_ipn'
 
 # MPESA_CONFIG = {
@@ -162,3 +160,45 @@ PESAPAL_TRANSACTION_DEFAULT_REDIRECT_URL = 'clients:pesapal_ipn'
 #     "SHORT_CODE": "174379",
 
 # }
+###########################################################################
+# mpesa
+
+# Possible values: sandbox, production
+
+MPESA_ENVIRONMENT = 'sandbox'
+
+# Credentials for the daraja app
+
+MPESA_CONSUMER_KEY = ''
+MPESA_CONSUMER_SECRET = ''
+
+#Shortcode to use for transactions. For sandbox  use the Shortcode 1 provided on test credentials page
+
+MPESA_SHORTCODE = '600111'
+
+# Shortcode to use for Lipa na MPESA Online (MPESA Express) transactions
+# This is only used on sandbox, do not set this variable in production
+# For sandbox use the Lipa na MPESA Online Shorcode provided on test credentials page
+
+MPESA_EXPRESS_SHORTCODE = '600111'
+
+# Type of shortcode
+# Possible values:
+# - paybill (For Paybill)
+# - till_number (For Buy Goods Till Number)
+
+MPESA_SHORTCODE_TYPE = 'till_number'
+
+# Lipa na MPESA Online passkey
+# Sandbox passkey is available on test credentials page
+# Production passkey is sent via email once you go live
+
+MPESA_PASSKEY = 'mpesa_passkey'
+
+# Username for initiator (to be used in B2C, B2B, AccountBalance and TransactionStatusQuery Transactions)
+
+MPESA_INITIATOR_USERNAME = 'initiator_username'
+
+# Plaintext password for initiator (to be used in B2C, B2B, AccountBalance and TransactionStatusQuery Transactions)
+
+MPESA_INITIATOR_SECURITY_CREDENTIAL = ''
