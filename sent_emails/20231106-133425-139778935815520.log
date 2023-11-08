@@ -1,0 +1,71 @@
+Content-Type: multipart/alternative;
+ boundary="===============2472667608744896745=="
+MIME-Version: 1.0
+Subject: Order received by kipekee
+From: webmaster@localhost
+To: martha@shop.com
+Date: Mon, 06 Nov 2023 13:34:25 -0000
+Message-ID: <169927766530.64496.609681270246041957@Atom-F11>
+
+--===============2472667608744896745==
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+
+Hello Martha Ondigi,
+We Have Received Your Order Of the following items
+
+    
+    2 - Office Station
+    
+    4 - Bed brown
+    
+
+Thank you for shopping with us.
+Reguards
+John Arthur S.
+&copy; kipekee
+
+
+--===============2472667608744896745==
+Content-Type: text/html; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+
+<h2 style="color: gray;">Hello Martha Ondigi,</h2>
+<h3 style="color:darkorchid;">We Have Received Your Order Of the following items</h3>
+<table border="1" style="border-collapse: collapse; border:1px; ">
+    <tr style="background-color: cornflowerblue; color: white;">
+        <th>Quantity</th>
+        <th style="width: 100%;">Items</th>
+        <th>Price</th>
+    </tr>
+    
+    <tr style="border: 1px solid black;">
+        <td>2</td>
+        <td style="width: 100%;">Office Station</td>
+        <td>68</td>
+
+    </tr>
+    
+    <tr style="border: 1px solid black;">
+        <td>4</td>
+        <td style="width: 100%;">Bed brown</td>
+        <td>48</td>
+
+    </tr>
+    
+</table>
+<p>Thank you for shopping with us.</p>
+<p>Regards</p>
+<p>John Arthur S.</p>
+<p>&copy; kipekee</p>
+
+
+--===============2472667608744896745==--
+
+-------------------------------------------------------------------------------

@@ -33,7 +33,7 @@
       <div class="navbar-menu-wrapper d-flex align-items-center flex-grow-1">
         <h5 class="mb-0 font-weight-medium d-none d-lg-flex">Welcome {{user.first_name}}</h5>
         <ul class="navbar-nav navbar-nav-right ml-auto">
-          <form class="search-form d-none d-md-block" action="/edit">
+          <form class="search-form d-none d-md-block" id="search" action="/edit">
             <i class="icon-magnifier"></i>
             <input type="search" class="form-control" name="q" placeholder="Search Here" title="Search here">
           </form>
@@ -82,25 +82,6 @@
               </a>
             </div>
           </li>
-          <!-- <li class="nav-item dropdown language-dropdown d-none d-sm-flex align-items-center">
-            <a class="nav-link d-flex align-items-center dropdown-toggle" id="LanguageDropdown" href="#"
-              data-toggle="dropdown" aria-expanded="false">
-              <div class="d-inline-flex mr-3">
-                <i class="flag-icon flag-icon-us"></i>
-              </div>
-              <span class="profile-text font-weight-normal">English</span>
-            </a>
-            <div class="dropdown-menu dropdown-menu-left navbar-dropdown py-2" aria-labelledby="LanguageDropdown">
-              <a class="dropdown-item">
-                <i class="flag-icon flag-icon-us"></i> English </a>
-              <a class="dropdown-item">
-                <i class="flag-icon flag-icon-fr"></i> French </a>
-              <a class="dropdown-item">
-                <i class="flag-icon flag-icon-ae"></i> Arabic </a>
-              <a class="dropdown-item">
-                <i class="flag-icon flag-icon-ru"></i> Russian </a>
-            </div>
-          </li> -->
           <li class="nav-item dropdown d-none d-xl-inline-flex user-dropdown">
             <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
               <img class="img-xs rounded-circle ml-2" src="/media/{{person.profile}}" alt="Profile image"> <span
@@ -199,7 +180,7 @@
           <li class="nav-item pro-upgrade">
             <span class="nav-link">
               <a class="btn btn-block px-0 btn-rounded btn-upgrade"
-                href="https://arthurom254.github.io/portfolio" target="_blank"> <i class=" icon-trash mx-2"></i> Delete Website Now</a>
+                href="https://arthurom254.github.io/portfolio" target="_blank"> <i class="icon-briefcase mx-2"></i> Author</a>
             </span>
           </li>
         </ul>

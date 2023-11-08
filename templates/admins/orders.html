@@ -2,5 +2,51 @@
 
 {%load static%}
 {%block body%}
-    
+<div class="card">
+    <div class="card-body">
+      <h4 class="card-title">Orders List</h4>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Name </th>
+            <th> Email</th>
+            <th> product </th>
+            <th> Amount </th>
+            <th> Location </th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+            {%for order in orders%}
+          <tr>
+            <td>
+                <img class="img-sm rounded-circle" src="/media/{{order.item.img.img}}" alt="{{order.item.title}}"> {{order.user.first_name}} {{order.user.last_name}}
+              </td>            <td> <a href="mailto:{{order.user.email}}">{{order.user.email}}</a> </td>
+            <td>{{order.item.title}}</td>
+            <td> Ksh. {{order.item.price}} </td>
+            <td>{% if order.location %}{{order.location}}{%else%} Pick Up{%endif%}</td>
+            <td>
+                <a href="?id={{order.user.id}}" class="text-success text-decoration-none">Pending <i class="icon-eye"></i></a>
+            </td>
+          </tr>
+          {%empty%}
+          <tr>
+          <td colspan="5" class="card-title text-center text-danger">Nothing found !!!</td>
+          </tr>
+          {%endfor%}
+          </tbody>
+      </table>
+      <div class="text-right m-2">
+            {% if items.has_previous %}
+            <a href="?{%if q%}q={{q}}&{%endif%}page={{items.previous_page_number}}" class="btn btn-primary btn-sm btn-icon-text"><i class=" icon-arrow-left me-2"></i></a>
+            {% endif %}
+            {% if items.has_next %}
+            <a href="?{%if q%}q={{q}}&{%endif%}page={{items.next_page_number}}" class="btn btn-primary btn-sm btn-icon-text"><i class=" icon-arrow-right me-2"></i></a>
+            {% endif %}
+        </div>
+      
+  
+    </div>
+  </div>
+
 {%endblock%}

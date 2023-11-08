@@ -1,0 +1,82 @@
+Content-Type: multipart/alternative;
+ boundary="===============1391980170481811153=="
+MIME-Version: 1.0
+Subject: Martha: martha@shop.com Placed an order
+From: webmaster@localhost
+To: admn@kipekee.com
+Date: Mon, 06 Nov 2023 13:46:06 -0000
+Message-ID: <169927836670.66781.11222552612421758540@Atom-F11>
+
+--===============1391980170481811153==
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+
+Martha Ondigi, Placed an order
+Items Ordered
+
+    
+        Quantity
+        Items
+        Price
+    
+    
+    
+        1
+        Office Station
+        34
+
+    
+    
+    
+        1
+        Bed brown
+        12
+
+    
+    
+
+
+&copy; kipekee
+
+
+--===============1391980170481811153==
+Content-Type: text/html; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+
+<h2 style="color: gray;">Martha Ondigi, Placed an order</h2>
+<h3 style="color:darkorchid;">Items Ordered</h3>
+<table border="1" style="border-collapse: collapse; border:1px; ">
+    <tr style="background-color: cornflowerblue; color: white;">
+        <th>Quantity</th>
+        <th style="width: 100%;">Items</th>
+        <th>Price</th>
+    </tr>
+    
+    <tr style="border: 1px solid black;">
+        <td>1</td>
+        <td style="width: 100%;">Office Station</td>
+        <td>34</td>
+
+    </tr>
+    
+    <tr style="border: 1px solid black;">
+        <td>1</td>
+        <td style="width: 100%;">Bed brown</td>
+        <td>12</td>
+
+    </tr>
+    
+</table>
+
+<p>&copy; kipekee</p>
+
+
+--===============1391980170481811153==--
+
+-------------------------------------------------------------------------------

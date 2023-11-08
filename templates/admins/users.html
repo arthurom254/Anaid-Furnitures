@@ -1,0 +1,53 @@
+{% extends 'admins/base.html'%}
+
+{%load static%}
+{%block body%}
+<div class="card">
+    <div class="card-body">
+      <h4 class="card-title">List of Users</h4>
+
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th> Email </th>
+            <th> Joined </th>
+            <th> Active </th>
+            <th> Action </th>
+          </tr>
+        </thead>
+        <tbody>
+          {%for u in users %}
+
+          <tr>
+            <td class="py-1">{{u.first_name}} {{u.last_name}}</td>
+            <td> {{u.email}} </td>
+            <td>{{user.date_joined}}</td>
+            <td> {{user.last_login}} </td>
+            <td>
+                <a href="/orders?id={{u.id}}" class="text-success text-decoration-none">Orders<i class="icon-eye"></i></a>
+            </td>
+          </tr>
+          {%empty%}
+          <tr>
+          <td colspan="5" class="card-title text-center text-danger">Nothing found !!!</td>
+          </tr>
+          {%endfor%}
+          </tbody>
+      </table>
+      <div class="text-right m-2">
+            {% if items.has_previous %}
+            <a href="?{%if q%}q={{q}}&{%endif%}page={{items.previous_page_number}}" class="btn btn-primary btn-sm btn-icon-text"><i class=" icon-arrow-left me-2"></i></a>
+            {% endif %}
+            {% if items.has_next %}
+            <a href="?{%if q%}q={{q}}&{%endif%}page={{items.next_page_number}}" class="btn btn-primary btn-sm btn-icon-text"><i class=" icon-arrow-right me-2"></i></a>
+            {% endif %}
+        </div>
+      
+  
+    </div>
+  </div>
+<script>
+    document.getElementById('search').action='';
+</script>
+{%endblock%}

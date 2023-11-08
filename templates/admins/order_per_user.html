@@ -1,0 +1,59 @@
+{% extends 'admins/base.html'%}
+
+{%load static%}
+{%block body%}
+
+{% regroup orders by invoice as grouped_order%}
+
+{%for order in grouped_order%}
+<div class="card border border-bottom">
+    <div class="card-body">
+        <div class="row">
+    <div class="col-6">
+    <h4 class="card-title">Invoice: {{order.grouper}}</h4>
+    <p> <span class="fw-bold">Date:</span> {{order.list.0.date}}</p>
+    <p> <span class="fw-bold">Name:</span> {{order.list.0.user.first_name}} {{order.list.0.user.last_name}}</p>
+    <p> <span class="fw-bold">Email:</span> {{order.list.0.user.email}}</p>
+    {%if order.list.0.location%}
+    <p> <span class="fw-bold">Phone:</span> <a class="" href="tel:{{order.list.0.location.phone}}">{{order.list.0.location.phone}}</a></p>
+    <p> <span class="fw-bold">Location:</span> <a class="" href="tel:{{order.list.0.location.phone}}">{{order.list.0.location.station}}</a></p>
+    <p class="text-success">To be Delivered</p>
+    {%else%}
+    <p class="text-danger">Pick Up - No Delivery</p>
+    {%endif%}
+    </div>
+    <div class="col-6 text-right">
+        <a href="#" class="btn btn-danger">Mark as delivered</a>
+    </div>
+    </div>
+    <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Product </th>
+            <th> Qty</th>
+            <th> Price </th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+    {%for o in order.list %}
+    <tr>
+        <td>
+            <img class="img-sm rounded-circle" src="/media/{{o.item.img.img}}" alt="{{o.item.title}}"> {{o.item.title}}
+        </td>            
+        <td>{{o.qty}}</td>
+        <td> Ksh. {{o.price}} </td>
+        
+        <td class="text-success">Pending</td>
+      </tr>
+    {%endfor%}
+    </tbody>
+    </table>
+</div>
+</div>
+
+{%empty%}
+<h4 class="card-title text-danger">Nothing Here</h4>
+{%endfor%}
+
+{%endblock%}

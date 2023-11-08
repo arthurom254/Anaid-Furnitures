@@ -1,0 +1,54 @@
+Content-Type: multipart/alternative;
+ boundary="===============2430996840207264999=="
+MIME-Version: 1.0
+Subject: Martha: martha@shop.com Placed an order
+From: webmaster@localhost
+To: admn@kipekee.com
+Date: Mon, 06 Nov 2023 13:34:25 -0000
+Message-ID: <169927766534.64496.17348959874421774176@Atom-F11>
+
+--===============2430996840207264999==
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+
+Martha Ondigi, Placed an order
+Items Ordered
+
+    
+        Quantity
+        Items
+        Price
+    
+    
+
+
+&copy; kipekee
+
+
+--===============2430996840207264999==
+Content-Type: text/html; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+
+<h2 style="color: gray;">Martha Ondigi, Placed an order</h2>
+<h3 style="color:darkorchid;">Items Ordered</h3>
+<table border="1" style="border-collapse: collapse; border:1px; ">
+    <tr style="background-color: cornflowerblue; color: white;">
+        <th>Quantity</th>
+        <th style="width: 100%;">Items</th>
+        <th>Price</th>
+    </tr>
+    
+</table>
+
+<p>&copy; kipekee</p>
+
+
+--===============2430996840207264999==--
+
+-------------------------------------------------------------------------------

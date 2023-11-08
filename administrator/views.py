@@ -1,13 +1,15 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages,auth
 from django.contrib.auth.models import User
-from .models import UserProfile, Category, Description, ItemImg
+from .models import UserProfile, Category, Description, ItemImg, Order
 from django.contrib.admin.models import LogEntry
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from administrator.models import Item
 from django.core.paginator import Paginator, EmptyPage
 from django.http import HttpResponse
+from django.db.models import Q
+
 @csrf_exempt
 def login(request):
     if request.method=='POST':
@@ -102,11 +104,33 @@ def dashboard(request):
 
 def orders(request):
     nxt=next(request)
+    try:
+        id=request.GET['id']
+    except:
+        id=None
+    try:
+        all=request.GET['all']
+    except:
+        all=None
     if request.user.is_authenticated:
         if request.user.is_superuser:
-            context={
-            }
-            return render(request, 'admins/orders.html', context)
+            if id is not None:
+                user=get_object_or_404(User,id=id)
+                order=Order.objects.filter(user=user).order_by('-id')
+                # return HttpResponse(f"User:{order.values()}")
+                context={
+                    'orders':order
+                }
+                return render(request, 'admins/order_per_user.html', context)
+            else:
+                if all is not None:
+                    order=Order.objects.all().order_by('order_status')
+                else:
+                    order=Order.objects.filter(order_status='False').order_by('-id')
+                context={
+                    'orders':order,
+                }
+                return render(request, 'admins/orders.html', context)
         else:
             return redirect('/')
     else:
@@ -190,7 +214,8 @@ def new(request):
         
     else:
         if action is not None and id is not None:
-            item=Item.objects.get(id=id) #Or 404
+            item=get_object_or_404(Item,id=id)
+            # item=Item.objects.get(id=id) #Or 404
         else:
             item=None
         context={
@@ -208,7 +233,7 @@ def edit(request):
     if request.user.is_authenticated:
         if request.user.is_superuser:
             if q is not None:
-                result=Item.objects.filter(title__icontains=q, outofstalk='False')
+                result=Item.objects.filter(title__icontains=q, outofstalk='False').order_by('-id')
                 page_n=request.GET.get('page',1)
                 p=Paginator(result, 10)
                 try:
@@ -216,7 +241,7 @@ def edit(request):
                 except EmptyPage:
                     items=p.page(1)
             else:
-                result=Item.objects.all()
+                result=Item.objects.all().order_by('-id')
                 page_n=request.GET.get('page',1)
                 p=Paginator(result, 10)
                 try:
@@ -254,3 +279,45 @@ def blog(request):
         return redirect(next_str)
     
     
+def users(request):
+    nxt=next(request)
+    try:
+        q=request.GET['q']
+    except:
+        q=None
+    if request.user.is_authenticated:
+        if request.user.is_superuser:
+            profile=UserProfile.objects.all()
+            if q is not None:
+                # result=User.objects.filter(first_name__icontains=q).order_by('-id')
+                result = User.objects.filter(Q(first_name__icontains=q) | Q(last_name__icontains=q)).order_by('-id')
+                page_n=request.GET.get('page',1)
+                p=Paginator(result, 10)
+                try:
+                    items=p.page(page_n)
+                except EmptyPage:
+                    items=p.page(1)
+            else:
+                result=User.objects.all().order_by('-id')
+                page_n=request.GET.get('page',1)
+                p=Paginator(result, 10)
+                try:
+                    items=p.page(page_n)
+                except EmptyPage:
+                    items=p.page(1)
+            context={
+                'users':items,
+                'q':q,
+                'profile':profile,
+            }
+            return render(request, 'admins/users.html', context)
+        else:
+            return redirect('/')
+    else:
+        next_str=f"/login?next={nxt}"
+        return redirect(next_str)
+    # u=UserProfile.objects.all()
+    # context={
+    #     'users':u,
+    # }
+    # return render(request, 'admins/users.html', context)
