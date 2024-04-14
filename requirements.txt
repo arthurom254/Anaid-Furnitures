@@ -6,7 +6,7 @@ cryptography==41.0.4
 defusedxml==0.7.1
 Django==4.2.5
 django-allauth==0.56.1
-idna==3.4
+idna==3.7
 oauthlib==3.2.2
 Pillow==10.0.1
 pycparser==2.21
